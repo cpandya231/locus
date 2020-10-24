@@ -27,4 +27,12 @@ public class Resource {
     public void setActionTypes(Set<ActionType> actionTypes) {
         this.actionTypes = actionTypes;
     }
+
+    @Override
+    public String toString() {
+        return "Resource{" +
+                "name='" + name + '\'' +
+                ", actionTypes=" + actionTypes +
+                '}';
+    }
 }

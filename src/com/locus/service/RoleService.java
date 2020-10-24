@@ -60,23 +60,24 @@ public class RoleService {
 
 
     public void removeRole() {
+
+        System.out.println("Enter role id to remove from user:");
+        String roleId = scanner.next();
         System.out.println("Enter userId:");
         String userId = scanner.next();
         Optional<User> userOptional = userService.findById(userId);
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            System.out.println("Enter role id to remove from user:");
-            String roleId = scanner.next();
-
             if (user.getUserRoles().stream().anyMatch(role -> role.getId().equalsIgnoreCase(roleId))) {
                 userService.removeUserRoles(user, roleId);
-                System.out.printf("Role %s removed from %s", roleId, userId);
+                System.out.printf("Role %s removed from %s", roleId, user.getName());
             } else {
-                System.out.println("Role not found");
+
+                System.out.println("User not found");
             }
 
         } else {
-            System.out.println("User not found");
+            System.out.println("Role not found");
         }
     }
 

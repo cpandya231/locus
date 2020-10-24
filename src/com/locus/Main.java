@@ -19,7 +19,7 @@ public class Main {
 
 
         while (true) {
-            System.out.println("Enter your choice:");
+
             System.out.println("Add new user: 1");
             System.out.println("Get user: 2");
             System.out.println("Add new role: 3");
@@ -30,6 +30,8 @@ public class Main {
             System.out.println("Get Resource: 8");
             System.out.println("Check if user has permission to access resource: 9");
 
+            System.out.println();
+            System.out.println("Enter your choice:");
             int choice = scanner.nextInt();
             switch (choice) {
                 case 1:

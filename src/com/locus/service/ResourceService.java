@@ -32,10 +32,11 @@ public class ResourceService {
         Set<String> actionItemsSelectedSet = Arrays.stream(selectedActionTypeList).collect(Collectors.toSet());
 
         if (actionTypes.containsAll(actionItemsSelectedSet)) {
-            Resource resource = new Resource(resourceName);
+            Resource resource = new Resource();
+            resource.setId(UUID.randomUUID().toString());
+            resource.setName(resourceName);
             resource.setActionTypes(actionItemsSelectedSet.stream().map(ActionType::new).collect(Collectors.toSet()));
             resourceRepository.addResource(resource);
-            System.out.printf("Resource %s added successfully", resourceName);
         } else {
             System.out.println("Action type selected is not associated with any roles, consider creating new role.");
         }
@@ -43,27 +44,27 @@ public class ResourceService {
     }
 
     public void getResources() {
-        System.out.println("Enter resource name: ");
-        String resourceName = scanner.next();
-        resourceRepository.findByResourceName(resourceName)
-                .ifPresentOrElse(System.out::println, () -> System.out.println("Resource not found"));
+
+        System.out.println(resourceRepository.getResources());
+
     }
 
 
     public void checkIfUserHasPermissionForResource() {
-        System.out.println("Enter resource name: ");
-        String resourceName = scanner.next();
-        Optional<Resource> resourceOptional = resourceRepository.findByResourceName(resourceName);
+        System.out.println("Enter resource id: ");
+        String resourceId = scanner.next();
+        Optional<Resource> resourceOptional = resourceRepository.findById(resourceId);
         if (resourceOptional.isPresent()) {
             Resource resource = resourceOptional.get();
-            System.out.println("Enter username: ");
-            String userName = scanner.next();
-            Optional<User> userOptional = userService.findByName(userName);
+            System.out.println("Enter userId: ");
+            String userId = scanner.next();
+            Optional<User> userOptional = userService.findById(userId);
             if (userOptional.isPresent()) {
-                if (isAuthorizedUser(resource, userOptional.get())) {
-                    System.out.printf("User %s is authorized to access the resource %s", userName, resourceName);
+                User user = userOptional.get();
+                if (isAuthorizedUser(resource, user)) {
+                    System.out.printf("User %s is authorized to access the resource %s", user.getName(), resource.getName());
                 } else {
-                    System.out.printf("User %s is not authorized to access the resource %s", userName, resourceName);
+                    System.out.printf("User %s is not authorized to access the resource %s", user.getName(), resource.getName());
                 }
             } else {
                 System.out.println("User not found");

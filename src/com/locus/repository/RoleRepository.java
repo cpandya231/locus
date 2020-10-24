@@ -11,11 +11,22 @@ public class RoleRepository {
 
 
     public void addRole(Role role) {
-        roleList.add(role);
+        Optional<Role> roleOptional = findByName(role.getName());
+        if (roleOptional.isPresent()) {
+            System.out.printf("Role %s is already added, roleId: %s", role.getName(), roleOptional.get().getId());
+        } else {
+            roleList.add(role);
+            System.out.printf("Role %s added successfully , roleId %s", role.getName(), role.getId());
+        }
+
     }
 
     public List<Role> getRoles() {
         return roleList;
+    }
+
+    public Optional<Role> findById(String roleId) {
+        return roleList.stream().filter(role -> role.getId().equalsIgnoreCase(roleId)).findFirst();
     }
 
     public Optional<Role> findByName(String roleName) {

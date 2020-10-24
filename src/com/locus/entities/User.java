@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
+    private String id;
     private String name;
     private List<Role> userRoles = new ArrayList<>();
+
 
     public String getName() {
         return name;
@@ -24,16 +26,24 @@ public class User {
         return userRoles;
     }
 
-    public void removeRoles(String roleName) {
-        userRoles.removeIf(role -> role.getName().equalsIgnoreCase(roleName));
+    public void removeRoles(String roleId) {
+        userRoles.removeIf(role -> role.getId().equalsIgnoreCase(roleId));
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
 
     @Override
     public String toString() {
-        return "User{" +
-                "name='" + name + '\'' +
-                ", userRoles=" + userRoles +
-                '}';
+        return "{\"User\":{"
+                + "\"id\":\"" + id + "\""
+                + ", \"name\":\"" + name + "\""
+                + ", \"userRoles\":" + userRoles
+                + "}}";
     }
 }

@@ -4,13 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Resource {
+    private String id;
     private String name;
 
     private Set<ActionType> actionTypes= new HashSet<>();
-
-    public Resource(String resourceName) {
-        name=resourceName;
-    }
 
     public String getName() {
         return name;
@@ -28,11 +25,20 @@ public class Resource {
         this.actionTypes = actionTypes;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
-        return "Resource{" +
-                "name='" + name + '\'' +
-                ", actionTypes=" + actionTypes +
-                '}';
+        return "{\"Resource\":{"
+                + "\"id\":\"" + id + "\""
+                + ", \"name\":\"" + name + "\""
+                + ", \"actionTypes\":" + actionTypes
+                + "}}";
     }
 }

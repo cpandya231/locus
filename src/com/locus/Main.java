@@ -1,19 +1,10 @@
 package com.locus;
 
-import com.locus.entities.ActionType;
-import com.locus.entities.Resource;
-import com.locus.entities.Role;
-import com.locus.entities.User;
-import com.locus.repository.ResourceRepository;
 import com.locus.service.ResourceService;
 import com.locus.service.RoleService;
 import com.locus.service.UserService;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
-import static com.locus.util.Constants.ANSI_RED;
-import static com.locus.util.Constants.ANSI_RESET;
+import java.util.Scanner;
 
 
 public class Main {
@@ -28,7 +19,7 @@ public class Main {
 
 
         while (true) {
-            System.out.println(ANSI_RED + "Enter your choice:" + ANSI_RESET);
+            System.out.println("Enter your choice:");
             System.out.println("Add new user: 1");
             System.out.println("Get user: 2");
             System.out.println("Add new role: 3");

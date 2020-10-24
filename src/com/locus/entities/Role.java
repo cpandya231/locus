@@ -5,8 +5,9 @@ import java.util.List;
 
 public class Role {
     private String name;
-
+    private String id;
     private List<ActionType> actionTypes = new ArrayList<>();
+
 
     public String getName() {
         return name;
@@ -28,12 +29,21 @@ public class Role {
         actionTypes.add(actionType);
     }
 
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
+
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Role: {");
-        sb.append("name='").append(name).append('\'');
-        sb.append(", actionTypes=").append(actionTypes);
-        sb.append("\n}");
-        return sb.toString();
+        return "{\"Role\":{"
+                + "\"name\":\"" + name + "\""
+                + ", \"actionTypes\":" + actionTypes
+                + ", \"id\":\"" + id + "\""
+                + "}}";
     }
 }

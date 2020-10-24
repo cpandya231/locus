@@ -34,9 +34,9 @@ Check if user has permission to access resource: 9
 
 Based on your need make a choice and follow the instructions in command line.
 
-##Usage
+## Usage
 
-###Create new user
+### Create new user
 ```bash
 Add new user: 1
 Get user: 2
@@ -56,7 +56,7 @@ User Chintan added successfully, User id 0ba508c6-8608-43c8-887c-598678efd12a
 
 ```
 
-###Add new role
+### Add new role
 ```bash
 
 Add new user: 1
@@ -80,7 +80,7 @@ Role Admin added successfully , roleId ef515ef1-eb64-41d9-ad51-5e020010490f
 
 ```
 
-###Assign role to user
+### Assign role to user
 ```bash
 
 Add new user: 1
@@ -102,7 +102,7 @@ Enter user id:
 Role Admin assigned to Chintan
 ```
 
-###Remove role from user
+### Remove role from user
 ```bash
 
 Add new user: 1
@@ -125,7 +125,7 @@ Role ef515ef1-eb64-41d9-ad51-5e020010490f removed from Chintan
 
 ```
 
-###Create Resource
+### Create Resource
 ```bash
 
 Add new user: 1
@@ -149,7 +149,7 @@ read,write
 Resource user-info added successfully , resourceId 9facd4b7-dbf8-4d65-b304-a03628f150d0
 
 ```
-###Check if user has permission to access resource
+### Check if user has permission to access resource
 ```bash
 
 Add new user: 1
@@ -172,9 +172,9 @@ User Chintan is authorized to access the resource user-info
 
 ```
 
-##Assumption and Limitations
+## Assumption and Limitations
 
 - All data is stored in-memory, so once you close the program data will be lost.
 - No data need to updated after creation. I have not considered scenario when Role or Resource info is updated.
 
-######For questions contact cpandya23@gmail.com
+###### For questions contact cpandya23@gmail.com
